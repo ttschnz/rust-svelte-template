@@ -38,6 +38,7 @@ impl ApiRequest<Users> {
                 model: basic.model,
                 action: basic.action,
                 method: basic.method,
+                path: basic.path,
                 error: None,
                 data,
             },
@@ -46,6 +47,7 @@ impl ApiRequest<Users> {
                 model: basic.model,
                 action: basic.action,
                 method: basic.method,
+                path: basic.path,
                 error: Some(err),
                 data: Users {
                     username: "".to_string(),

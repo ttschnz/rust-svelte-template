@@ -2,6 +2,8 @@ use actix_web::{http::Method, HttpRequest};
 use queryst::parse;
 use serde_json::Value;
 pub mod users;
+
+#[derive(Debug)]
 pub struct ApiRequest<T = Value> {
     _raw: HttpRequest,
     pub model: String,
@@ -9,6 +11,7 @@ pub struct ApiRequest<T = Value> {
     pub method: Method,
     pub error: Option<String>,
     pub data: T,
+    pub path: String,
 }
 impl ApiRequest {
     pub fn basic(req: HttpRequest) -> Self {
@@ -29,6 +32,7 @@ impl ApiRequest {
                 "unknown"
             })
             .to_string();
+        let path = req.path().to_string();
         let method = req.method().clone();
         let data = match method {
             Method::GET => {
@@ -62,6 +66,7 @@ impl ApiRequest {
             method,
             error,
             data,
+            path,
         }
     }
 }
