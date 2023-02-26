@@ -1,0 +1,11 @@
+# node and svelte stuff
+/app/node_modules/
+/app/public/build/
+/app.DS_Store
+
+
+# rust stuff
+/api/debug/
+/api/target/
+**/*.rs.bk
+*.pdb
