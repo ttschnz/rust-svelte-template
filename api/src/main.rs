@@ -1,7 +1,7 @@
 pub mod api_requests;
 use crate::api_requests::{respond, users::Users, ApiRequest};
 use actix_files::Files;
-use actix_web::{middleware, web, App, HttpRequest, HttpServer, Responder};
+use actix_web::{web, App, HttpRequest, HttpServer, Responder};
 
 async fn api(raw_req: HttpRequest, body: String) -> impl Responder {
     let basic = ApiRequest::basic(raw_req, body);
